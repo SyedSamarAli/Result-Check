@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Check Result</title>
+</head>
+<header class="head">
+    <h1>Check Result</h1>
+</header>
+<body>
+    <section class="sec1">
+        <div class="label">
+            <label for="cheTotal">
+                Total Number of chemistry :
+                <input type="number" id="cheTotal">
+            </label>
+            <br>
+            <label for="cheObtained">
+                Obtained Number of chemistry :
+                <input type="number" id="cheObtained">
+            </label>
+            <br>
+            <label for="mathTotal">
+                Total Number of math : 
+                <input type="number" id="mathTotal">
+            </label>
+            <br>
+            <label for="mathObtained">
+                Obtained Number of math :
+                <input type="number" id="mathObtained">
+            </label>
+            <br>
+            <label for="phyTotal">
+                Total Number of physics :
+                
+            <input type="number" id="phyTotal">
+            </label>
+            <br>
+            <label for="phyObtained">
+                Obtained Number of physics :
+                <input type="number" id="phyObtained">
+            </label>
+        </div>
+        <br>
+
+        <button onclick="checkout()">Check</button>
+        <div class="table">
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>Total</th>
+                    <th>Obtained</th>
+                    <th>Percentage</th>
+                    <th>Grade</th>
+                </tr>
+
+                <tr>
+                    <th>Chemistry</th>
+                    <td id="showTotalche"></td>
+                    <td id="showObtainedche"></td>
+                    <td id="showPercentageche"></td>
+                    <td id="showGradeche"></td>
+                </tr>
+
+                <tr>
+                    <th>Math</th>
+                    <td id="showTotalmath"></td>
+                    <td id="showObtainedmath"></td>
+                    <td id="showPercentagemath"></td>
+                    <td id="showGrademath"></td>
+                </tr>
+
+                <tr>
+                    <th>Physics</th>
+                    <td id="showTotalphy"></td>
+                    <td id="showObtainedphy"></td>
+                    <td id="showPercentagephy"></td>
+                    <td id="showGradephy"></td>
+                </tr>
+
+                <tr>
+                    <th>Overall</th>
+                    <td id="showTotalall"></td>
+                    <td id="showObtaindall"></td>
+                    <td id="showPercentageall"></td>
+                    <td id="showGradeall"></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        function checkout() {
+            let total_Number_Of_chemistry = Number(document.getElementById("cheTotal").value);
+            let obtained_Number_Of_chemistry = Number(document.getElementById("cheObtained").value);
+            let percentage_Of_chemistry = (obtained_Number_Of_chemistry / total_Number_Of_chemistry) * 100;
+
+            let total_Number_Of_math = Number(document.getElementById("mathTotal").value);
+            let obtained_Number_Of_math = Number(document.getElementById("mathObtained").value);
+            let percentage_Of_math = (obtained_Number_Of_math / total_Number_Of_math) * 100;
+
+            let total_Number_Of_physics = Number(document.getElementById("phyTotal").value);
+            let obtained_Number_Of_physics = Number(document.getElementById("phyObtained").value);
+            let percentage_Of_physics = (obtained_Number_Of_physics / total_Number_Of_physics) * 100;
+
+            document.getElementById("showTotalche").innerText = total_Number_Of_chemistry;
+            document.getElementById("showObtainedche").innerText = obtained_Number_Of_chemistry;
+            document.getElementById("showPercentageche").innerText = percentage_Of_chemistry.toFixed(2) + "%";
+
+            if (percentage_Of_chemistry >= 80) {
+                document.getElementById("showGradeche").innerText = "A+";
+            } else if (percentage_Of_chemistry >= 70) {
+                document.getElementById("showGradeche").innerText = "A";
+            } else if (percentage_Of_chemistry >= 60) {
+                document.getElementById("showGradeche").innerText = "B";
+            } else if (percentage_Of_chemistry >= 50) {
+                document.getElementById("showGradeche").innerText = "C";
+            } else {
+                document.getElementById("showGradeche").innerText = "Fail";
+            }
+
+            document.getElementById("showTotalmath").innerText = total_Number_Of_math;
+            document.getElementById("showObtainedmath").innerText = obtained_Number_Of_math;
+            document.getElementById("showPercentagemath").innerText = percentage_Of_math.toFixed(2) + "%";
+
+            if (percentage_Of_math >= 80) {
+                document.getElementById("showGrademath").innerText = "A+";
+            } else if (percentage_Of_math >= 70) {
+                document.getElementById("showGrademath").innerText = "A";
+            } else if (percentage_Of_math >= 60) {
+                document.getElementById("showGrademath").innerText = "B";
+            } else if (percentage_Of_math >= 50) {
+                document.getElementById("showGrademath").innerText = "C";
+            } else {
+                document.getElementById("showGrademath").innerText = "Fail";
+            }
+
+            document.getElementById("showTotalphy").innerText = total_Number_Of_physics;
+            document.getElementById("showObtainedphy").innerText = obtained_Number_Of_physics;
+            document.getElementById("showPercentagephy").innerText = percentage_Of_physics.toFixed(2) + "%";
+
+            if (percentage_Of_physics >= 80) {
+                document.getElementById("showGradephy").innerText = "A+";
+            } else if (percentage_Of_physics >= 70) {
+                document.getElementById("showGradephy").innerText = "A";
+            } else if (percentage_Of_physics >= 60) {
+                document.getElementById("showGradephy").innerText = "B";
+            } else if (percentage_Of_physics >= 50) {
+                document.getElementById("showGradephy").innerText = "C";
+            } else {
+                document.getElementById("showGradephy").innerText = "Fail";
+            }
+
+            // Calculating Overall Numbers and Percentage
+            let total_Number_Of_All_Subject = total_Number_Of_chemistry + total_Number_Of_math + total_Number_Of_physics;
+            let obtained_Number_Of_All_Subject = obtained_Number_Of_chemistry + obtained_Number_Of_math + obtained_Number_Of_physics;
+            let percentage_Of_All_Subject = (obtained_Number_Of_All_Subject / total_Number_Of_All_Subject) * 100;
+
+            // Showing Text of Overall row
+            document.getElementById("showTotalall").innerText = total_Number_Of_All_Subject;
+            document.getElementById("showObtaindall").innerText = obtained_Number_Of_All_Subject;
+            document.getElementById("showPercentageall").innerText = percentage_Of_All_Subject.toFixed(2) + "%";
+
+            // Checking Grade And Show
+            if (percentage_Of_All_Subject >= 80) {
+                document.getElementById("showGradeall").innerText = "A+";
+            } else if (percentage_Of_All_Subject >= 70) {
+                document.getElementById("showGradeall").innerText = "A";
+            } else if (percentage_Of_All_Subject >= 60) {
+                document.getElementById("showGradeall").innerText = "B";
+            } else if (percentage_Of_All_Subject >= 50) {
+                document.getElementById("showGradeall").innerText = "C";
+            } else {
+                document.getElementById("showGradeall").innerText = "Fail";
+            }
+        }
+    </script>
+</body>
+</html>
